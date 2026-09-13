@@ -1,160 +1,147 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Команда 15</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Команда 15 — Анализ данных олимпиады «Изумруд»</title>
+  <meta name="description" content="Команда 15 — анализ данных олимпиады «Изумруд»: состав команды, инструменты Python, Pandas, статистика и визуализации.">
+  <link rel="canonical" href="https://mrmalakhovdmitri.github.io/DANO/">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://mrmalakhovdmitri.github.io/DANO/">
+  <meta property="og:site_name" content="DANO — Команда 15">
+  <meta property="og:title" content="Команда 15 — Анализ данных олимпиады «Изумруд»">
+  <meta property="og:description" content="Состав команды, инструменты и подход к анализу данных: Python, Pandas, statsmodels, seaborn, numpy, matplotlib.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Команда 15 — Анализ данных олимпиады «Изумруд»">
+  <meta name="twitter:description" content="Состав команды, инструменты и подход к анализу данных олимпиады «Изумруд».">
+  <meta name="theme-color" content="#FFDD2D">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root { --dano-yellow: #FFDD2D; }
+    body { font-family: "Ubuntu", system-ui, sans-serif; line-height: 1.5; }
+    #nav { background-color: var(--dano-yellow); }
+    #nav .navbar-brand, #nav .nav-link { color: #141414; }
+    #nav .nav-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .press-start-2p-regular, h1, h2 {
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      font-weight: 400;
+      line-height: 1.4;
+      text-wrap: balance;
+    }
+    h1 { font-size: clamp(1.4rem, 4vw, 2.5rem); }
+    h2 { font-size: clamp(1rem, 2.6vw, 1.4rem); }
+    :focus-visible { outline: 3px solid #141414; outline-offset: 2px; }
+    footer :focus-visible { outline-color: #FFDD2D; }
+  </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg" id="nav">
-  <div class="container-fluid">
+<nav class="navbar navbar-expand-lg" id="nav" aria-label="Основная навигация">
+  <!-- БЫЛО container-fluid (на всю ширину) -> СТАЛО container (как весь остальной сайт) -->
+  <div class="container">
     <a class="navbar-brand press-start-2p-regular" href="#">DANO</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Открыть меню">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Участники</a>
+          <a class="nav-link active" aria-current="page" href="#team">Участники</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Инструменты</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"></a>
+          <a class="nav-link" href="#tools">Инструменты</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
-
-
-
-    <div class="p-5 text-center press-start-2p-regular ">
-        <h1>Команда 15</h1>
-        <p>Анализ данных олимпиады "Изумруд"</p>
-    </div>
-    <div class="container py-5">
- 
-  <h1 class="mb-5 press-start-2p-regular">Команда проекта</h1>
- 
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
- 
-    <div class="col">
-      <div class="card h-100">
-        <div class="card-body">
-          <h5 class="card-title press-start-2p-regular">Алёна Сазонова</h5>
-          <p class="card-text">разработка сайта, подготовка презентации и теоретической части.</p>
-        </div>
-      </div>
-    </div>
- 
-    <div class="col">
-      <div class="card h-100">
-        <div class="card-body">
-          <h5 class="card-title press-start-2p-regular">Дмитрий Малахов</h5>
-          <p class="card-text">дизайн презентации и оформление сайта.</p>
-        </div>
-      </div>
-    </div>
- 
-    <div class="col">
-      <div class="card h-100">
-        <div class="card-body">
-          <h5 class="card-title press-start-2p-regular">Режешевский Сергей</h5>
-          <p class="card-text">разработка структуры проекта и моделей.</p>
-        </div>
-      </div>
-    </div>
- 
-    <div class="col">
-      <div class="card h-100">
-        <div class="card-body">
-          <h5 class="card-title press-start-2p-regular">Евгения Аршинова</h5>
-          <p class="card-text">очистка и подготовка данных, статистический анализ.</p>
-        </div>
-      </div>
-    </div>
- 
-    <div class="col">
-      <div class="card h-100">
-        <div class="card-body">
-          <h5 class="card-title press-start-2p-regular">Марк Мухарамов</h5>
-          <p class="card-text"> анализ данных, построение графиков и визуализаций.</p>
-        </div>
-      </div>
-    </div>
+<!-- БЫЛО div.p-5 без контейнера -> СТАЛО header > div.container -->
+<header class="text-center py-5">
+  <div class="container">
+    <h1>Команда 15</h1>
+    <p class="lead mb-0">Анализ данных олимпиады «Изумруд»</p>
   </div>
-</div>
+</header>
 
-<div class="container p-3">
-    <h1>Инструменты и источники</h1>
-    <p>В ходе работы над проектом мы использовали большое количество библиотек, программ, сайтов для создания максимально продуманных гипотез и  самого точного анализа</p>
+<main>
+  <section class="container py-5" id="team" aria-labelledby="team-title">
+    <h2 class="mb-5" id="team-title">Команда проекта</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title press-start-2p-regular fs-6">Алёна Сазонова</h3>
+            <p class="card-text">Разработка сайта, подготовка презентации и теоретической части.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title press-start-2p-regular fs-6">Дмитрий Малахов</h3>
+            <p class="card-text">Дизайн презентации и оформление сайта.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title press-start-2p-regular fs-6">Сергей Режешевский</h3>
+            <p class="card-text">Разработка структуры проекта и моделей.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title press-start-2p-regular fs-6">Евгения Аршинова</h3>
+            <p class="card-text">Очистка и подготовка данных, статистический анализ.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title press-start-2p-regular fs-6">Марк Мухарамов</h3>
+            <p class="card-text">Анализ данных, построение графиков и визуализаций.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container pb-5" id="tools" aria-labelledby="tools-title">
+    <h2 id="tools-title">Инструменты</h2>
+    <p>В ходе работы над проектом мы использовали большое количество библиотек, программ и сайтов для создания продуманных гипотез и самого точного анализа.</p>
     <ul>
-      <li>Язык програмирования: Python</li>
-      <li>Pandas - работа с таблицами</li>
-      <li>statsmodels - статистика</li>
-      <li>seaborn - создание графиков</li>
-      <li>numpy - работа с числами</li>
-      <li> matplotlib - создание графиков</li>
+      <li>Язык программирования: Python</li>
+      <li>Pandas — работа с таблицами</li>
+      <li>statsmodels — статистика</li>
+      <li>seaborn — создание графиков</li>
+      <li>numpy — работа с числами</li>
+      <li>matplotlib — создание графиков</li>
     </ul>
-</div>
-
+  </section>
+</main>
 
 <footer class="bg-dark text-light py-4 mt-5">
   <div class="container">
-    <div class="row">
     <hr class="border-secondary">
-
     <div class="text-center">
-      <p class="mb-0"> Спасибо за посящение сайта. Выбирайте команду 15</p>
+      <p class="mb-0">Спасибо за посещение сайта. Выбирайте команду 15</p>
     </div>
   </div>
 </footer>
 
-</body>
-
-<style>
-    #nav {
-        background-color: #FFDD2D;
-    }
-
-    .press-start-2p-regular {
-    font-family: "Press Start 2P", system-ui;
-    font-weight: 400;
-    font-style: normal;
-    }
-    h1 {
-    font-family: "Press Start 2P", system-ui;
-    font-weight: 400;
-    font-style: normal;
-    }
-    
-    p {
-        font-family: "Ubuntu", sans-serif;
-        font-weight: 400;
-        font-style: normal;
-        }
-
-</style>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
 </html>
